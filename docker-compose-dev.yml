@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  postgres:
+    env_file:
+      - .env
+    image: postgres:16.2-alpine
+    container_name: postgres
+    restart: unless-stopped
+    expose:
+      - $DB_PORT
+    ports:
+      - $DB_PORT:$DB_PORT
+    networks:
+      - microservices_network
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    environment:
+#      - NODE_ENV=production
+      - POSTGRES_DB=$DB_NAME
+      - POSTGRES_USER=$DB_USERNAME
+      - POSTGRES_PASSWORD=$DB_PASSWORD
+      - TZ=Europe/Moscow
+      - POSTGRES_INITDB_ARGS="--encoding=UTF8"
+    command: -p $DB_PORT
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U $DB_USERNAME -d $DB_NAME -h 127.0.0.1' ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  rabbitmq:
+    env_file:
+      - .env
+    image: rabbitmq:3.13.0-management # rabbitmq:3.13.0-rc.5-alpine
+    container_name: rabbitmq
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
+    ports:
+      - $RABBITMQ_PORT:$RABBITMQ_PORT
+      - $RABBITMQ_ADMIN_MENU_PORT:$RABBITMQ_ADMIN_MENU_PORT
+    networks:
+      microservices_network:
+    #        ipv4_address: 175.16.1.5
+    restart: unless-stopped
+
+  api-gateway:
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    container_name: api-gateway
+    build:
+      context: ./apps/api-gateway
+      dockerfile: Dockerfile
+      target: development
+    #    command: npm run start:dev
+    command: sh -c "cd /usr/src/app && npm run start:dev"
+    depends_on:
+      - postgres
+      - rabbitmq
+    volumes:
+      - ./apps/api-gateway:/usr/src/app
+    #      - ./apps/server:/usr/src/app/node_modules
+    ports:
+      - $API_GATEWAY_PORT:$API_GATEWAY_PORT
+    networks:
+      - microservices_network
+    restart: unless-stopped
+
+  product-service:
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+    container_name: product-service
+    build:
+      context: ./apps/product-service
+      dockerfile: Dockerfile
+      target: development
+    command: sh -c "cd /usr/src/app && npm run start:dev"
+    depends_on:
+      - api-gateway
+      - postgres
+      - rabbitmq
+    volumes:
+      - ./apps/public-service:/usr/src/app
+    networks:
+      microservices_network:
+    restart: unless-stopped
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  microservices_network:
