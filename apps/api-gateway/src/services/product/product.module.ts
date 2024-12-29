@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { commonVars } from './config/common.config';
-import { amqpClientOptions } from './config/amqpClientOptions';
-import { queues } from './config/rmq.config';
-import { ControllersModule } from './InterfaceAdapters/controllers/controllers.module';
+import { commonVars } from '../../configs/common.config';
+import { queues } from '../../configs/rmq.config';
+import { amqpClientOptions } from '../../configs/amqpClientOptions';
+import { ProductController } from './controllers/product.controller';
 
 @Module({
   imports: [
@@ -17,8 +17,11 @@ import { ControllersModule } from './InterfaceAdapters/controllers/controllers.m
         },
       },
     ]),
-    ControllersModule,
+  ],
+  controllers: [
+    ///
+    ProductController,
   ],
   providers: [],
 })
-export class AppModule {}
+export class ProductModule {}

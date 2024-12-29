@@ -33,7 +33,7 @@ services:
   rabbitmq:
     env_file:
       - .env
-    image: rabbitmq:3.13.0-management # rabbitmq:3.13.0-rc.5-alpine
+    image: rabbitmq:3.13.0-management
     container_name: rabbitmq
     volumes:
       - ./rabbitmq:/var/lib/rabbitmq
@@ -85,7 +85,7 @@ services:
       - postgres
       - rabbitmq
     volumes:
-      - ./apps/public-service:/usr/src/app
+      - ./apps/product-service:/usr/src/app
     networks:
       microservices_network:
     restart: unless-stopped
