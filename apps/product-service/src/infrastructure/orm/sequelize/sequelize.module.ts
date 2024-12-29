@@ -5,8 +5,7 @@ import { seqConfigs } from './config';
 @Module({
   imports: [
     ///
-    // SequelizeModule.forRootAsync(seqConfigs[0]) // TODO Разобраться
-    SequelizeModule.forRoot(seqConfigs[0])
-],
+    SequelizeModule.forRootAsync({ useFactory: () => seqConfigs[0] }),
+  ],
 })
 export class SequelizeConfigModule {}
