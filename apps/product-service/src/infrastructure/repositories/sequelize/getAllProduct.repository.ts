@@ -16,21 +16,21 @@ export class SequelizeGetAllProductRepository
 
   async execute(): Promise<Product[] | Failure> {
     try {
-      const products = (await this.productModel.sequelize.query(
+      const products: Product[] = await this.productModel.sequelize.query(
         `
         SELECT
           id,
           name
-        FROM products
+        FROM Products
+        ORDER BY name;
         `,
         {
           type: QueryTypes.SELECT,
         },
-      )) as Product[];
+      );
       return products;
     } catch (error) {
-      console.log(error);
-      return new Failure(error.message);
+      return new Failure(error);
     }
   }
 }

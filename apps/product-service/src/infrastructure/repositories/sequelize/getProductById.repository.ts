@@ -16,11 +16,31 @@ export class SequelizeGetProductByIdRepository
 
   async execute({ id }: { id: number }): Promise<Product | Failure> {
     ///
-    const product = (await this.productModel.sequelize.query(``, {
-      bind: { id },
-      type: QueryTypes.SELECT,
-    })[0]) as Product;
+    try {
+      ///
+      const product: { id: Product['id']; name: Product['name'] }[] =
+        await this.productModel.sequelize.query(
+        `
+        SELECT
+          id,
+          name
+        FROM Products
+        WHERE id = $id
+        ORDER BY name;
+        `,
+          {
+            bind: { id },
+            type: QueryTypes.SELECT,
+          },
+        );
 
-    return product;
+      if (!product?.length) {
+        return new Failure(new Error('Product not found'));
+      }
+
+      return product[0];
+    } catch (error) {
+      return new Failure(error);
+    }
   }
 }

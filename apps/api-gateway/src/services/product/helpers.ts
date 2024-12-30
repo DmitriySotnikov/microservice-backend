@@ -8,10 +8,13 @@ export const getRMQServiceResponse = async ({ clientRMQ, cmd, payload }) => {
   if (serviceRes?.error) {
     throw new BadRequestException(
       //
-      serviceRes?.message || 'Service error',
       {
-        cause: new Error(),
-        description: serviceRes?.description || 'Произошла ошибка в сервисе',
+        message:
+          serviceRes.error.message ||
+          serviceRes.error.description ||
+          serviceRes.message ||
+          'Error',
+        status: serviceRes.status || 400,
       },
     );
   }

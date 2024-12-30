@@ -1,4 +1,14 @@
+import { Id } from '../valueObjects/id.vo';
+import { ProductName } from '../valueObjects/productName.vo';
+
 export class Product {
-  id: number;
-  name: string;
+  constructor(
+    ///
+    public readonly id: Id,
+    public readonly name: ProductName,
+  ) {
+    if (!!Number(id)) {
+      throw new Error('Id must be number!');
+    }
+  }
 }
