@@ -9,7 +9,7 @@ export const getTransaction =
   ) =>
   async (): Promise<any> => {
     return sequelize.transaction(
-      { isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED },
+      { isolationLevel: Transaction.ISOLATION_LEVELS.REPEATABLE_READ },
       async (transaction: Transaction): Promise<any> => {
         try {
           return await callback(transaction);
@@ -22,7 +22,7 @@ export const getTransaction =
           }
 
           // Вывод ошибки в dev режиме
-          console.log('ВЫВОД ОШИБКИ В ОБЕРКЕ НАД ТРАНЗАКЦИЕЙ - ', error);
+          console.log('ВЫВОД ОШИБКИ В ОБЕРТКЕ НАД ТРАНЗАКЦИЕЙ - ', error);
 
           throw new Error(
             error?.message || error?.stack || error?.detail || message,
