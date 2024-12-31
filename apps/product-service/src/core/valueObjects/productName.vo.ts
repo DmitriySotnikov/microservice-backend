@@ -5,7 +5,10 @@ export class ProductName {
     if (!name || !name?.trim()?.length) {
       throw new Error('Product name cannot be empty');
     }
-    this.name = name;
+    if (name?.trim()?.length < 3) {
+      throw new Error('Product name cannot be less than 3 characters');
+    }
+    this.name = name.trim();
   }
 
   get value(): string {

@@ -6,9 +6,5 @@ export class Product {
     ///
     public readonly id: Id,
     public readonly name: ProductName,
-  ) {
-    if (!!Number(id)) {
-      throw new Error('Id must be number!');
-    }
-  }
+  ) {}
 }
