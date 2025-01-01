@@ -3,7 +3,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { commonVars } from './config/common.config';
 import { amqpClientOptions } from './config/amqpClientOptions';
 import { queues } from './config/rmq.config';
-import { ControllersModule } from './InterfaceAdapters/controllers/controllers.module';
+import { ControllersModule } from './interfaceAdapters/controllers/controllers.module';
 
 @Module({
   imports: [

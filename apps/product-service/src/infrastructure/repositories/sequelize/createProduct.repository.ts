@@ -14,7 +14,7 @@ export class SequelizeCreateProductRepository
     private readonly productModel: typeof ProductModel,
   ) {}
 
-  async execute(product: Product): Promise<{ productId: Id } | Failure> {
+  async execute(product: Product): Promise<{ productId: Id["value"] } | Failure> {
     ///
     const [newProduct] = await this.productModel.sequelize.query(
       `
@@ -32,6 +32,6 @@ export class SequelizeCreateProductRepository
       return new Failure(new Error('Failed to create product'));
     }
 
-    return { productId: newProduct[0].id as Id };
+    return { productId: newProduct[0].id };
   }
 }

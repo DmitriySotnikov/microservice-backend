@@ -5,5 +5,5 @@ import { Id } from 'src/core/valueObjects/id.vo';
 export abstract class CreateProductRepository {
   abstract execute(
     product: ProductToCreate,
-  ): Promise<{ productId: Id } | Failure>;
+  ): Promise<{ productId: Id['value'] } | Failure>;
 }

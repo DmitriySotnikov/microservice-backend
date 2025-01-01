@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductRepository, Id } from '../../../core';
 import { Failure } from 'src/core/exceptions';
 import { CreateProductFactoryService } from './createProductFactory.service';
-import { CreateProductDto } from 'src/InterfaceAdapters/dtos/createProductDto';
+import { CreateProductDto } from 'src/interfaceAdapters/dtos/createProductDto';
 
 @Injectable()
 export class CreateProductUseCase {
@@ -15,7 +15,7 @@ export class CreateProductUseCase {
     createProduct,
   }: {
     createProduct: CreateProductDto;
-  }): Promise<{ productId: Id } | Failure> {
+  }): Promise<{ productId: Id['value'] } | Failure> {
     try {
       const productToCreate =
         this.createProductFactoryService.createNewProduct(createProduct);

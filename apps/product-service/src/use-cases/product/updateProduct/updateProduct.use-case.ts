@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Product, UpdateProductRepository } from '../../../core';
 import { Failure } from '../../../core/exceptions';
 import { UpdateProductFactoryService } from './updateProductFactory.service';
-import { UpdateProductDto } from 'src/InterfaceAdapters/dtos/updateProductDto';
+import { UpdateProductDto } from 'src/interfaceAdapters/dtos/updateProductDto';
 
 @Injectable()
 export class UpdateProductUseCase {
@@ -15,7 +15,7 @@ export class UpdateProductUseCase {
     updateProduct,
   }: {
     updateProduct: UpdateProductDto;
-  }): Promise<Product | Failure> {
+  }): Promise<{ id: Product['id']['value']; name: Product['name']['value'] } | Failure> {
     try {
       const product =
         this.updateProductFactoryService.updateProduct(updateProduct);

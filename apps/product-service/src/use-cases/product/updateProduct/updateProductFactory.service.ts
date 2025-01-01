@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Id, Product, ProductName } from '../../../core';
-import { UpdateProductDto } from 'src/InterfaceAdapters/dtos/updateProductDto';
+import { UpdateProductDto } from 'src/interfaceAdapters/dtos/updateProductDto';
 
 @Injectable()
 export class UpdateProductFactoryService {
