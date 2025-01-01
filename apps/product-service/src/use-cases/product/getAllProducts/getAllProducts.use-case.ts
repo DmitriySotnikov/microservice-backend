@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Product, GetAllProductsRepository } from 'src/core';
-import { Failure } from 'src/core/exceptions';
+import { Product, GetAllProductsRepository } from '../../../core';
+import { Failure } from '../../../core/exceptions';
 
 @Injectable()
 export class GetAllProductsUseCase {

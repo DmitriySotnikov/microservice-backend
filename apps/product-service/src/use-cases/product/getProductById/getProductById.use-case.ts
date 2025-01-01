@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Product, GetProductByIdRepository } from 'src/core';
+import { Product, GetProductByIdRepository } from '../../../core';
 import { Failure } from 'src/core/exceptions';
 
 @Injectable()

@@ -12,7 +12,7 @@ export const seqConfigs: SequelizeModuleOptions[] = [
     username: process.env.DB_USERNAME || 'postgres',
     password: process.env.DB_PASSWORD || 'postgres',
     database: process.env.DB_NAME || 'nest',
-    logging: true, // process.env.NODE_ENV === 'development',
+    logging: process.env.NODE_ENV === 'development',
     pool: {
       max: 5,
       min: 0,

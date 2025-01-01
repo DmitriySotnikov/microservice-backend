@@ -4,7 +4,7 @@ import { GetProductByIdUseCase } from './product/getProductById/getProductById.u
 import { CreateProductUseCase } from './product/createProduct/createProduct.use-case';
 import { DeleteProductUseCase } from './product/deleteProduct/deleteProduct.use-case';
 import { GetAllProductsUseCase } from './product/getAllProducts/getAllProducts.use-case';
-import { RepositoriesModule } from 'src/infrastructure/repositories/repositories.module';
+import { RepositoriesModule } from '../infrastructure/repositories/repositories.module';
 import { CreateProductFactoryService } from './product/createProduct/createProductFactory.service';
 import { UpdateProductFactoryService } from './product/updateProduct/updateProductFactory.service';
 

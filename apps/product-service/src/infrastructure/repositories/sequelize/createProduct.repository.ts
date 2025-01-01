@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateProductRepository, Id, Product } from 'src/core';
 import { ProductModel } from '../../orm/sequelize/models/Product.model';
-import { Failure } from 'src/core/exceptions';
+import { Failure } from '../../../core/exceptions';
 import { QueryTypes } from 'sequelize';
 
 @Injectable()

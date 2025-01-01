@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ProductName, ProductToCreate } from 'src/core';
+import { ProductName, ProductToCreate } from '../../../core';
 import { CreateProductDto } from 'src/InterfaceAdapters/dtos/createProductDto';
 
 @Injectable()

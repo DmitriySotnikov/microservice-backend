@@ -1,4 +1,4 @@
-import { ProductName } from '../../valueObjects/productName.vo';
+import { ProductName } from './productName.vo';
 
 describe('ProductName', () => {
   ///

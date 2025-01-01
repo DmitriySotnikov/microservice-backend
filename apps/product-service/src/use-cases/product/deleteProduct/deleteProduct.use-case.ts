@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { DeleteProductRepository, Id } from 'src/core';
-import { Failure } from 'src/core/exceptions';
+import { DeleteProductRepository, Id } from '../../../core';
+import { Failure } from '../../../core/exceptions';
 
 @Injectable()
 export class DeleteProductUseCase {

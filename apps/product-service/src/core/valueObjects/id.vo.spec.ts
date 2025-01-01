@@ -1,4 +1,4 @@
-import { Id } from "../../valueObjects/id.vo";
+import { Id } from "./id.vo";
 
 
 describe('Id Value Object', () => {

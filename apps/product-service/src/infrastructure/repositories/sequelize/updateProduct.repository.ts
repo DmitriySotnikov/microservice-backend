@@ -1,8 +1,8 @@
 import { Injectable, Query } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Product, UpdateProductRepository } from 'src/core';
+import { Product, UpdateProductRepository } from '../../../core';
 import { ProductModel } from '../../orm/sequelize/models/Product.model';
-import { Failure } from 'src/core/exceptions';
+import { Failure } from '../../../core/exceptions';
 import { QueryTypes } from 'sequelize';
 
 @Injectable()

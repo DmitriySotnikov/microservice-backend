@@ -1,14 +1,14 @@
 import { SequelizeModule } from '@nestjs/sequelize';
 import { SequelizeConfigModule } from '../orm/sequelize/sequelize.module';
 import { Module } from '@nestjs/common';
-import { models } from 'src/infrastructure/orm/sequelize/models';
+import { models } from '../../infrastructure/orm/sequelize/models';
 import {
   CreateProductRepository,
   DeleteProductRepository,
   GetAllProductsRepository,
   GetProductByIdRepository,
   UpdateProductRepository,
-} from 'src/core';
+} from '../../core';
 import { SequelizeDeleteProductRepository } from './sequelize/deleteProduct.repository';
 import { SequelizeGetAllProductRepository } from './sequelize/getAllProduct.repository';
 import { SequelizeGetProductByIdRepository } from './sequelize/getProductById.repository';

@@ -7,11 +7,11 @@ import {
 import { Controller } from '@nestjs/common';
 import { productEventPatterns } from '../../config/rmq.config';
 import { ack, getErrorObject } from '../../infrastructure/helpers/helpers';
-import { CreateProductUseCase } from 'src/use-cases/product/createProduct/createProduct.use-case';
-import { GetAllProductsUseCase } from 'src/use-cases/product/getAllProducts/getAllProducts.use-case';
-import { DeleteProductUseCase } from 'src/use-cases/product/deleteProduct/deleteProduct.use-case';
-import { GetProductByIdUseCase } from 'src/use-cases/product/getProductById/getProductById.use-case';
-import { UpdateProductUseCase } from 'src/use-cases/product/updateProduct/updateProduct.use-case';
+import { CreateProductUseCase } from '../../use-cases/product/createProduct/createProduct.use-case';
+import { GetAllProductsUseCase } from '../../use-cases/product/getAllProducts/getAllProducts.use-case';
+import { DeleteProductUseCase } from '../../use-cases/product/deleteProduct/deleteProduct.use-case';
+import { GetProductByIdUseCase } from '../../use-cases/product/getProductById/getProductById.use-case';
+import { UpdateProductUseCase } from '../../use-cases/product/updateProduct/updateProduct.use-case';
 import { UpdateProductDto } from '../dtos/updateProductDto';
 
 @Controller()

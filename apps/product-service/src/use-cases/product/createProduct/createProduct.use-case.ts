@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProductRepository, Id } from 'src/core';
+import { CreateProductRepository, Id } from '../../../core';
 import { Failure } from 'src/core/exceptions';
 import { CreateProductFactoryService } from './createProductFactory.service';
 import { CreateProductDto } from 'src/InterfaceAdapters/dtos/createProductDto';

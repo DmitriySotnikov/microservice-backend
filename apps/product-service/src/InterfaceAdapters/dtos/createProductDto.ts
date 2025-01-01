@@ -5,5 +5,3 @@ export class CreateProductDto {
   @IsNotEmpty()
   name: string;
 }
-
-export class UpdateAuthorDto {}

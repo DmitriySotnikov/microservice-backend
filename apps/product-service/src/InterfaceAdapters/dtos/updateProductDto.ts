@@ -9,5 +9,3 @@ export class UpdateProductDto {
   @IsNotEmpty()
   name: string;
 }
-
-export class UpdateAuthorDto {}

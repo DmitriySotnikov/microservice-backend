@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Product, UpdateProductRepository } from 'src/core';
-import { Failure } from 'src/core/exceptions';
+import { Product, UpdateProductRepository } from '../../../core';
+import { Failure } from '../../../core/exceptions';
 import { UpdateProductFactoryService } from './updateProductFactory.service';
 import { UpdateProductDto } from 'src/InterfaceAdapters/dtos/updateProductDto';
 
