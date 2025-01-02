@@ -15,7 +15,7 @@ export class UpdateProductUseCase {
     updateProduct,
   }: {
     updateProduct: UpdateProductDto;
-  }): Promise<{ id: Product['id']['value']; name: Product['name']['value'] } | Failure> {
+  }): Promise<Product | Failure> {
     try {
       const product =
         this.updateProductFactoryService.updateProduct(updateProduct);

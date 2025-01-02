@@ -1,9 +1,8 @@
-import { ProductToCreate } from 'src/core/entities/productToCreate.entity';
 import { Failure } from '../../exceptions';
-import { Id } from 'src/core/valueObjects/id.vo';
+import { Product, ProductWithoutId } from '../../entities/product.entity';
 
 export abstract class CreateProductRepository {
   abstract execute(
-    product: ProductToCreate,
-  ): Promise<{ productId: Id['value'] } | Failure>;
+    product: ProductWithoutId,
+  ): Promise<{ productId: Product['id'] } | Failure>;
 }

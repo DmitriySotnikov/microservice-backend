@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { DeleteProductRepository, Id } from '../../../core';
+import { DeleteProductRepository } from '../../../core';
 import { ProductModel } from '../../orm/sequelize/models/Product.model';
 import { Failure } from '../../../core/exceptions';
-import { QueryTypes } from 'sequelize';
 
 @Injectable()
 export class SequelizeDeleteProductRepository
@@ -14,29 +13,22 @@ export class SequelizeDeleteProductRepository
     private readonly productModel: typeof ProductModel,
   ) {}
 
-  async execute({ id }: { id: number }): Promise<{ productId: Id } | Failure> {
+  async execute({
+    id,
+  }: {
+    id: number;
+  }): Promise<{ message: string } | Failure> {
     ///
-    const [product] = await this.productModel.sequelize.query(
-      `
-      UPDATE Products
-      SET deleted_at = now()
-      WHERE id = $id
-      RETURNING id
-      `,
-      {
-        bind: { id },
-        type: QueryTypes.UPDATE,
-      },
-    );
+    const product = await this.productModel.destroy({
+      where: { id },
+    });
 
-    if (!product || !product[0]) {
+    if (!product) {
       return new Failure(new Error('Failed to deleted product'));
     }
 
-    const updatedProduct = product[0] as { id: Id };
-
     return {
-      productId: updatedProduct.id,
+      message: 'Resource deleted successfully.',
     };
   }
 }

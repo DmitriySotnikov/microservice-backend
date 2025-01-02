@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/sequelize';
 import { GetProductByIdRepository, Product } from '../../../core';
 import { ProductModel } from '../../orm/sequelize/models/Product.model';
 import { Failure } from '../../../core/exceptions';
-import { QueryTypes } from 'sequelize';
 
 @Injectable()
 export class SequelizeGetProductByIdRepository
@@ -16,31 +15,14 @@ export class SequelizeGetProductByIdRepository
 
   async execute({ id }: { id: number }): Promise<Product | Failure> {
     ///
-    try {
-      ///
-      const product: { id: Product['id']; name: Product['name'] }[] =
-        await this.productModel.sequelize.query(
-        `
-        SELECT
-          id,
-          name
-        FROM Products
-        WHERE id = $id
-        ORDER BY name;
-        `,
-          {
-            bind: { id },
-            type: QueryTypes.SELECT,
-          },
-        );
+    const product: Product = await this.productModel.findByPk(id, {
+      attributes: ['id', 'name'],
+    });
 
-      if (!product?.length) {
-        return new Failure(new Error('Product not found'));
-      }
-
-      return product[0];
-    } catch (error) {
-      return new Failure(error);
+    if (!product) {
+      return new Failure(new Error('Product not found'));
     }
+
+    return product;
   }
 }

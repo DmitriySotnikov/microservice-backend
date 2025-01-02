@@ -1,4 +1,3 @@
-import { Id } from 'src/core/valueObjects/id.vo';
 import { Failure } from '../../exceptions';
 
 export abstract class DeleteProductRepository {
@@ -6,5 +5,5 @@ export abstract class DeleteProductRepository {
     id,
   }: {
     id: number;
-  }): Promise<{ productId: Id } | Failure>;
+  }): Promise<{ message: string } | Failure>;
 }

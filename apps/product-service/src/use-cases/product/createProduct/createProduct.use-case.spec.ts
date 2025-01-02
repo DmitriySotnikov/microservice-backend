@@ -1,5 +1,5 @@
 import { CreateProductDto } from '../../../interfaceAdapters/dtos/createProductDto';
-import { CreateProductRepository, Id } from '../../../core';
+import { CreateProductRepository } from '../../../core';
 import { CreateProductUseCase } from './createProduct.use-case';
 import { CreateProductFactoryService } from './createProductFactory.service';
 import { Failure } from '../../../core/exceptions';
@@ -27,7 +27,7 @@ describe('CreateProductUseCase (Integration)', () => {
 
   it('should create a product successfully', async () => {
     const MockCreateProductRepository: CreateProductRepository = {
-      execute: async () => ({ productId: new Id(1).value }),
+      execute: async () => ({ productId: 1 }),
     };
 
     const useCase = createTestSetup(MockCreateProductRepository);

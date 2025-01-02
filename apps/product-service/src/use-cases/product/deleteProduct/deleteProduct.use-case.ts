@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { DeleteProductRepository, Id } from '../../../core';
+import { DeleteProductRepository } from '../../../core';
 import { Failure } from '../../../core/exceptions';
 
 @Injectable()
@@ -8,7 +8,11 @@ export class DeleteProductUseCase {
     private readonly deleteProductRepository: DeleteProductRepository,
   ) {}
 
-  async execute({ id }: { id: number }): Promise<{ productId: Id } | Failure> {
+  async execute({
+    id,
+  }: {
+    id: number;
+  }): Promise<{ message: string } | Failure> {
     try {
       return this.deleteProductRepository.execute({ id });
     } catch (error) {

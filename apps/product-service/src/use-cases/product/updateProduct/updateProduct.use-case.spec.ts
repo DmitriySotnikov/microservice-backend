@@ -3,7 +3,7 @@ import { Failure } from '../../../core/exceptions';
 import { UpdateProductFactoryService } from './updateProductFactory.service';
 import { UpdateProductUseCase } from './updateProduct.use-case';
 import { UpdateProductDto } from '../../../interfaceAdapters/dtos/updateProductDto';
-import { Id, Product, ProductName } from '../../../core';
+import { Product } from '../../../core';
 
 describe('UpdateProductUseCase (Integration)', () => {
   ///
@@ -29,11 +29,13 @@ describe('UpdateProductUseCase (Integration)', () => {
 
   it('should update a product successfully', async () => {
     const MockUpdateProductRepository: UpdateProductRepository = {
-      execute: async () =>
-        await {
-          id: new Id(1).value,
-          name: new ProductName('Test Product').value,
-        },
+      execute: async () => {
+        const mockProduct = new Product(1, 'Test Product');
+        return await {
+          id: mockProduct.id,
+          name: mockProduct.name,
+        };
+      },
     };
 
     const useCase = updateTestSetup(MockUpdateProductRepository);

@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { ProductName, ProductToCreate } from '../../../core';
-import { CreateProductDto } from 'src/interfaceAdapters/dtos/createProductDto';
+import { ProductWithoutId } from '../../../core';
+import { CreateProductDto } from '../../../interfaceAdapters/dtos/createProductDto';
 
 @Injectable()
 export class CreateProductFactoryService {
   createNewProduct(createProductDto: CreateProductDto) {
-    const newProduct = new ProductToCreate(
+    const newProduct = new ProductWithoutId(
       // name
-      new ProductName(createProductDto.name),
+      createProductDto.name,
     );
 
     return newProduct;
