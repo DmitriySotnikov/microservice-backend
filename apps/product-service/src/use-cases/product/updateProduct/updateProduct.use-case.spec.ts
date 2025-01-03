@@ -30,7 +30,7 @@ describe('UpdateProductUseCase (Integration)', () => {
   it('should update a product successfully', async () => {
     const MockUpdateProductRepository: UpdateProductRepository = {
       execute: async () => {
-        const mockProduct = new Product(1, 'Test Product');
+        const mockProduct = new Product({ id: 1, name: 'Test Product' });
         return await {
           id: mockProduct.id,
           name: mockProduct.name,

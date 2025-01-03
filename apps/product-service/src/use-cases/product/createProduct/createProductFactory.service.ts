@@ -5,11 +5,7 @@ import { CreateProductDto } from '../../../interfaceAdapters/dtos/createProductD
 @Injectable()
 export class CreateProductFactoryService {
   createNewProduct(createProductDto: CreateProductDto) {
-    const newProduct = new ProductWithoutId(
-      // name
-      createProductDto.name,
-    );
-
+    const newProduct = new ProductWithoutId({ name: createProductDto.name });
     return newProduct;
   }
 }
