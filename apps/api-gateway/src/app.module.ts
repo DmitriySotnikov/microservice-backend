@@ -4,7 +4,6 @@ import { ProductModule } from './services/product/product.module';
 
 @Module({
   imports: [
-    ///
     AuthModule,
     ProductModule,
   ],

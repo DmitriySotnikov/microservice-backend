@@ -14,7 +14,6 @@ export class SequelizeUpdateProductRepository
   ) {}
 
   async execute(product: Product): Promise<Product | Failure> {
-    ///
     const [updatedProduct] = await this.productModel.update(
       {
         name: product.name,

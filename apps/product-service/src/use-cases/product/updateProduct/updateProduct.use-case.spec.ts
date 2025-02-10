@@ -6,7 +6,6 @@ import { UpdateProductDto } from '../../../interfaceAdapters/dtos/updateProductD
 import { Product } from '../../../core';
 
 describe('UpdateProductUseCase (Integration)', () => {
-  ///
   let updateProductFactoryService: UpdateProductFactoryService;
 
   beforeEach(() => {

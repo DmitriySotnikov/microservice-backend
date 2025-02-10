@@ -26,7 +26,6 @@ export class ProductController {
 
   @MessagePattern(productEventPatterns.CREATE_PRODUCT)
   async createProductController(
-    ///
     @Payload() { createProduct },
     @Ctx() context: RmqContext,
   ) {
@@ -41,7 +40,6 @@ export class ProductController {
 
   @MessagePattern(productEventPatterns.GET_ALL_PRODUCTS)
   async getAllProductsController(
-    ///
     @Payload() {},
     @Ctx() context: RmqContext,
   ) {
@@ -56,7 +54,6 @@ export class ProductController {
 
   @MessagePattern(productEventPatterns.GET_PRODUCT_BY_ID)
   async getProductByIdController(
-    ///
     @Payload() { id },
     @Ctx() context: RmqContext,
   ) {
@@ -71,7 +68,6 @@ export class ProductController {
 
   @MessagePattern(productEventPatterns.UPDATE_PRODUCT)
   async updateProductsController(
-    ///
     @Payload() { updateProduct }: { updateProduct: UpdateProductDto },
     @Ctx() context: RmqContext,
   ) {
@@ -86,7 +82,6 @@ export class ProductController {
 
   @MessagePattern(productEventPatterns.DELETE_PRODUCT)
   async deleteProductsController(
-    ///
     @Payload() { id },
     @Ctx() context: RmqContext,
   ) {

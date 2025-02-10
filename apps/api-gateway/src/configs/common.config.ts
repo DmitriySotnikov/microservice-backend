@@ -1,4 +1,3 @@
-///
 export const commonVars = {
   PRODUCT_SERVICE: 'PUBLIC_SERVICE',
 };

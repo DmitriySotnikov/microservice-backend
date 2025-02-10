@@ -14,7 +14,6 @@ export class SequelizeGetProductByIdRepository
   ) {}
 
   async execute({ id }: { id: number }): Promise<Product | Failure> {
-    ///
     const product: Product = await this.productModel.findByPk(id, {
       attributes: ['id', 'name'],
     });

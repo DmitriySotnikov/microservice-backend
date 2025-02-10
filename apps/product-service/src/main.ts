@@ -13,7 +13,6 @@ async function bootstrap() {
       options: { ...amqpClientOptions, queue: queues.PRODUCT_SERVICE_QUEUE },
     },
   );
-  ///
   await app.listen();
 }
 

@@ -16,7 +16,6 @@ export class SequelizeCreateProductRepository
   async execute(
     product: Product,
   ): Promise<{ productId: Product['id'] } | Failure> {
-    ///
     const newProduct = await this.productModel.create({
       name: product.name,
     });

@@ -3,6 +3,5 @@ import { ProductModel } from './Product.model';
 
 
 export const models: ModelCtor[] = [
-  ///
   ProductModel,
 ];

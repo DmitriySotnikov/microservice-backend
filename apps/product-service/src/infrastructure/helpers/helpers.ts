@@ -14,7 +14,6 @@ export const getTransaction =
         try {
           return await callback(transaction);
         } catch (error) {
-          ///
           await transaction.rollback();
 
           if (process.env.NODE_ENV === 'production') {
@@ -33,7 +32,6 @@ export const getTransaction =
   };
 
 export const getErrorObject = (error) => {
-  ///
   if (process.env.NODE_ENV === 'production') {
     return {
       error: 'Error',

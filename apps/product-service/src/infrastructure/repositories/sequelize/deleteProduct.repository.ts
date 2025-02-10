@@ -18,7 +18,6 @@ export class SequelizeDeleteProductRepository
   }: {
     id: number;
   }): Promise<{ message: string } | Failure> {
-    ///
     const product = await this.productModel.destroy({
       where: { id },
     });

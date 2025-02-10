@@ -4,7 +4,6 @@ import { seqConfigs } from './config';
 
 @Module({
   imports: [
-    ///
     SequelizeModule.forRootAsync({ useFactory: () => seqConfigs[0] }),
   ],
 })

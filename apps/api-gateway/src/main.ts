@@ -9,7 +9,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   if (!serverConfig.isProd) {
-    ///
     const config = new DocumentBuilder()
       .setTitle('Welcome to Api')
       .setDescription('Auto Part API')

@@ -16,7 +16,6 @@ import {
   tableName: 'products',
 })
 export class ProductModel extends Model<ProductModel> {
-  ///
   @AllowNull(false)
   @Unique
   @AutoIncrement

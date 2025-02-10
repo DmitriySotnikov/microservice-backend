@@ -7,7 +7,6 @@ import { serverConfig } from '../configs/common.config';
     JwtModule.register({
       global: true,
       secret: serverConfig.JWT_SECRET,
-      // signOptions: { expiresIn: serverConfig.TOKEN_EXPIRES_IN },
     }),
   ],
   providers: [],

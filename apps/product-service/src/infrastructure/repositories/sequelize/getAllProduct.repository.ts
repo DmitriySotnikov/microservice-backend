@@ -14,7 +14,6 @@ export class SequelizeGetAllProductRepository
   ) {}
 
   async execute(): Promise<Product[] | Failure> {
-    ///
     const products: ProductModel[] = await this.productModel.findAll({
       attributes: ['id', 'name'],
     });

@@ -23,18 +23,14 @@ import { CreateProductDTO } from '../dtos/createProductDTO';
 @Controller(prefix)
 export class ProductController {
   constructor(
-    /// RMQ
     @Inject(commonVars.PRODUCT_SERVICE)
     private readonly client: ClientProxy,
   ) {}
-  ///
   @Post(routes.CREATE_PRODUCT)
   async createProductController(
-    ///
     @Res() response: Response,
     @Body() createProduct: CreateProductDTO,
   ): Promise<any> {
-    ///
     return response.send(
       await getRMQServiceResponse({
         clientRMQ: this.client,
@@ -46,10 +42,8 @@ export class ProductController {
 
   @Get(routes.GET_PRODUCT)
   async getAllProductsController(
-    ///
     @Res() response: Response,
   ): Promise<any> {
-    ///
     return response.send(
       await getRMQServiceResponse({
         clientRMQ: this.client,
@@ -61,11 +55,9 @@ export class ProductController {
 
   @Get(routes.GET_PRODUCT_BY_ID)
   async getProductByIdController(
-    ///
     @Res() response: Response,
     @Param('id') id: string,
   ): Promise<any> {
-    ///
     return response.send(
       await getRMQServiceResponse({
         clientRMQ: this.client,
@@ -77,11 +69,9 @@ export class ProductController {
 
   @Put(routes.UPDATE_PRODUCT)
   async updateProductController(
-    ///
     @Res() response: Response,
     @Body() updateProduct: UpdateProductDTO,
   ): Promise<any> {
-    ///
     return response.send(
       await getRMQServiceResponse({
         clientRMQ: this.client,
@@ -93,11 +83,9 @@ export class ProductController {
 
   @Delete(routes.DELETE_PRODUCT)
   async deleteProductController(
-    ///
     @Res() response: Response,
     @Param('id') id: string,
   ): Promise<any> {
-    ///
     return response.send(
       await getRMQServiceResponse({
         clientRMQ: this.client,

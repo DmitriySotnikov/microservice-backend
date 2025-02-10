@@ -5,7 +5,6 @@ import { CreateProductFactoryService } from './createProductFactory.service';
 import { Failure } from '../../../core/exceptions';
 
 describe('CreateProductUseCase (Integration)', () => {
-  ///
   let createProductFactoryService: CreateProductFactoryService;
 
   beforeEach(() => {
